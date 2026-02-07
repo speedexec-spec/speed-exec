@@ -2,11 +2,13 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import { CalModal } from './CalModal'
 
 export function CTASection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [isCalOpen, setIsCalOpen] = useState(false)
 
   return (
     <section ref={ref} className="relative py-32 px-6">
@@ -36,7 +38,10 @@ export function CTASection() {
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <button className="glow-button px-12 py-5 rounded-2xl text-lg font-bold text-primary-foreground tracking-wide uppercase">
+          <button 
+            onClick={() => setIsCalOpen(true)}
+            className="glow-button px-12 py-5 rounded-2xl text-lg font-bold text-primary-foreground tracking-wide uppercase cursor-pointer"
+          >
             Initiate Pilot
           </button>
         </motion.div>
@@ -55,6 +60,13 @@ export function CTASection() {
           <div className="w-16 h-px bg-gradient-to-l from-transparent to-accent-blue/50" />
         </motion.div>
       </div>
+      
+      {/* Cal.com Modal */}
+      <CalModal 
+        isOpen={isCalOpen} 
+        onClose={() => setIsCalOpen(false)}
+        calLink="speed/pilot-call" // Replace with your Cal.com link
+      />
     </section>
   )
 }
