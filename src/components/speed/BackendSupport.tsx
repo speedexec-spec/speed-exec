@@ -49,7 +49,7 @@ export function BackendSupport() {
               Backend & Support
             </h2>
             <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-              The operational layer that enables your closers to focus on what they do best—closing.
+              The operational layer that enables our closers to focus on what they do best—closing.
             </p>
             
             {/* Decorative sphere */}
